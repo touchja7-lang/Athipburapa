@@ -1,0 +1,193 @@
+/* --- Global & Fonts --- */
+.news-detail-wrapper, .news-page-container {
+    font-family: 'Kanit', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #333;
+}
+
+/* 🟢 ปุ่มย้อนกลับแบบ Glassmorphism (ปรับให้เล็กลงและคมชัดขึ้น) */
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+    padding: 8px 18px;
+    border-radius: 50px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: #fff;
+    color: #000;
+    transform: translateX(-3px);
+}
+
+/* 🟢 News Hero: ส่วนภาพหัวข่าว (ลดความสูงลงเพื่อให้เห็นเนื้อหาเร็วขึ้น) */
+.news-hero {
+    position: relative;
+    width: 100%;
+    height: 50vh; /* ลดจาก 60vh ให้กระชับ */
+    min-height: 400px;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.news-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: heroZoom 15s infinite alternate ease-in-out;
+}
+
+@keyframes heroZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.08); }
+}
+
+.news-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 80%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.news-header-content {
+    max-width: 900px;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+.news-badge {
+    background: #00a859;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: inline-block;
+}
+
+.news-main-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    margin: 10px 0;
+    line-height: 1.25;
+    font-weight: 700;
+    text-shadow: 0 2px 15px rgba(0,0,0,0.3);
+}
+
+/* --- Content Body: ส่วนเนื้อหาบทความ (กระชับระยะห่าง) --- */
+.news-body-container {
+    max-width: 780px; 
+    margin: 40px auto; /* ลดจาก 60px */
+    padding: 0 20px;
+}
+
+.news-text {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 25px;
+}
+
+.news-body-container img {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block;
+    margin: 30px auto; /* ลดระยะห่างบน-ล่างรูปภาพ */
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* --- News Page: หน้าหลักรวมข่าว --- */
+.news-page-container {
+    background-color: #fff; /* ใช้พื้นสีขาวสะอาด */
+    padding: 50px 20px; /* ลดจาก 60px */
+}
+
+.news-page-title {
+    font-size: clamp(2rem, 5vw, 2.6rem);
+    font-weight: 800;
+    margin-bottom: 40px; /* ลดระยะห่างลง */
+    text-align: center;
+    color: #1d1d1f; /* สีดำเข้มพรีเมียม */
+    -webkit-text-fill-color: initial;
+    letter-spacing: -0.5px;
+}
+
+/* 🟢 Grid ข่าว: จัดวางให้กระชับขึ้น */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px; /* ลดจาก 40px */
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* 🟢 News Card: ลบ Border ใช้เงาจางๆ แทนเพื่อให้ดูไม่ตัน */
+.news-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.04);
+    border: none; /* ลบเส้นขอบเทาออก */
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.news-card-image {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
+
+.news-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news-card-content {
+    padding: 20px; /* ลดจาก 30px ให้กระชับ */
+}
+
+.news-card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #1a1a1a;
+    margin-bottom: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* --- 📱 Mobile Optimized --- */
+@media (max-width: 768px) {
+    .news-hero { height: 40vh; }
+    .news-page-container { padding: 30px 15px; }
+    .news-grid { gap: 20px; }
+    .news-page-title { margin-bottom: 25px; }
+}
